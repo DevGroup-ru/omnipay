@@ -7,6 +7,7 @@ use Omnipay\Common\Message\AbstractRequest;
 /**
  * Robokassa Purchase Request
  */
+
 class PurchaseRequest extends AbstractRequest
 {
 	protected $liveEndpoint = 'https://auth.robokassa.ru/Merchant/Index.aspx';
