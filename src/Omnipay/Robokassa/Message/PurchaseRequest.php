@@ -52,7 +52,7 @@ class PurchaseRequest extends AbstractRequest
 
     public function getData()
     {
-        $this->validate('amount', 'description');
+        $this->validate('OutSum');
 
         $data = array();
         $data['MrchLogin'] = $this->getMerchantLogin();
@@ -65,6 +65,11 @@ class PurchaseRequest extends AbstractRequest
         $data['Culture'] = 'ru';
 
         return $data;
+    }
+
+    public function getAmount()
+    {
+        return $this->getParameter('OutSum');
     }
 
 

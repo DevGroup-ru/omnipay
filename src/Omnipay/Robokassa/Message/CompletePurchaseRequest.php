@@ -14,7 +14,7 @@ namespace Omnipay\Robokassa\Message;
 use Omnipay\Common\Exception\InvalidResponseException;
 
 /**
- * 2Checkout Complete Purchase Request
+ * Robokassa Complete Purchase Request
  */
 class CompletePurchaseRequest extends PurchaseRequest
 {

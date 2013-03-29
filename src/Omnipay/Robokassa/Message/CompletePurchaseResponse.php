@@ -14,7 +14,7 @@ namespace Omnipay\Robokassa\Message;
 use Omnipay\Common\Message\AbstractResponse;
 
 /**
- * 2Checkout Complete Purchase Response
+ * Robokassa Complete Purchase Response
  */
 class CompletePurchaseResponse extends AbstractResponse
 {
