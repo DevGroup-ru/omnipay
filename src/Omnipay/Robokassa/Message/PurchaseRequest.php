@@ -72,14 +72,9 @@ class PurchaseRequest extends AbstractRequest
         return $this->setParameter('InvId', $value);
     }
 
-    public function getAmount()
-    {
-        return $this->getParameter('OutSum');
-    }
-
     public function getData()
     {
-        $this->validate('amount');
+        
 
         $data = array();
         $data['MrchLogin'] = $this->getMerchantLogin();
