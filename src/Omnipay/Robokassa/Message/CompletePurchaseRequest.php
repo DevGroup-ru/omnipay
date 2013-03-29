@@ -26,15 +26,11 @@ class CompletePurchaseRequest extends PurchaseRequest
         $key = md5(
             $amount . ":"
             . $orderNo . ":"
-            . $this->getMerchantPass1()
+            . $this->getMerchantPass2()
             );
 
         if (strtolower($this->httpRequest->request->get('SignatureValue')) !== $key) {
-            throw new InvalidResponseException(
-                'Invalid signature:'.$key." ".$amount . ":"
-                . $orderNo . ":"
-                . $this->getMerchantPass1()
-                );
+            throw new InvalidResponseException('Invalid signature');
         }
 
         return $this->httpRequest->request->all();
