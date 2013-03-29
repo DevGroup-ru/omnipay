@@ -84,11 +84,11 @@ class PurchaseRequest extends AbstractRequest
         $data['Desc'] = $this->getDescription();
 
         $data['SignatureValue'] = md5(
-                $data['MrchLogin'].":"
-                .$data['OutSum'].":"
-                .$data['InvId'].":"
-                .$this->getMerchantPass1()
-            );
+            $data['MrchLogin'].":"
+            .$data['OutSum'].":"
+            .$data['InvId'].":"
+            .$this->getMerchantPass1()
+        );
         $data['Culture'] = 'ru';
 
         return $data;

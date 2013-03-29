@@ -23,11 +23,7 @@ class CompletePurchaseRequest extends PurchaseRequest
         $orderNo = $this->httpRequest->request->get('InvId');
         $amount = $this->httpRequest->request->get('OutSum');
 
-        $key = md5(
-            $amount . ":"
-            . $orderNo . ":"
-            . $this->getMerchantPass2()
-            );
+        $key = md5($amount.":".$orderNo.":".$this->getMerchantPass2());
 
         if (strtolower($this->httpRequest->request->get('SignatureValue')) !== $key) {
             throw new InvalidResponseException('Invalid signature');
