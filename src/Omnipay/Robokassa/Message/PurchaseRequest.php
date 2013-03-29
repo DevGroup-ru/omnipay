@@ -1,7 +1,9 @@
 <?php
 
 namespace Omnipay\Robokassa\Message;
+
 use Omnipay\Common\Message\AbstractRequest;
+
 /**
  * Robokassa Purchase Request
  */
@@ -50,6 +52,27 @@ class PurchaseRequest extends AbstractRequest
         return $this->setParameter('IncCurrLabel', $value);
     }
 
+    public function getOutSum()
+    {
+        return $this->getParameter('OutSum');
+    }
+
+    public function setOutSum($value)
+    {
+        return $this->setParameter('OutSum', $value);
+    }
+
+    public function getInvId()
+    {
+        return $this->getParameter('InvId');
+    }
+
+    public function setInvId($value)
+    {
+        return $this->setParameter('InvId', $value);
+    }
+
+
     public function getData()
     {
         $this->validate('OutSum');
@@ -58,10 +81,15 @@ class PurchaseRequest extends AbstractRequest
         $data['MrchLogin'] = $this->getMerchantLogin();
 
         $data['InvId'] = $this->getTransactionId();
-        $data['OutSum'] = $this->getOutSumDecimal();
+        $data['OutSum'] = $this->getOutSum();
         $data['Desc'] = $this->getDescription();
 
-        $data['SignatureValue'] = md5($data['MrchLogin'].":".$data['OutSum'].":".$data['InvId'].":".$this->getMerchantPass1());
+        $data['SignatureValue'] = md5(
+                $data['MrchLogin'].":"
+                .$data['OutSum'].":"
+                .$data['InvId'].":"
+                .$this->getMerchantPass1()
+            );
         $data['Culture'] = 'ru';
 
         return $data;
@@ -76,18 +104,10 @@ class PurchaseRequest extends AbstractRequest
 
     public function setOutSum($value)
     {
-        return $this->setParameter('OutSum', (int) $value);
+        return $this->setParameter('OutSum',  $value);
     }
 
-    public function getOutSumDecimal()
-    {
-        return number_format(
-            $this->getOutSum() / $this->getCurrencyDecimalFactor(),
-            $this->getCurrencyDecimalPlaces(),
-            '.',
-            ''
-        );
-    }
+    
 
     public function send()
     {
