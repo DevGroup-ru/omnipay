@@ -30,8 +30,6 @@ class CompletePurchaseRequest extends PurchaseRequest
             );
 
         if (strtolower($this->httpRequest->request->get('SignatureValue')) !== $key) {
-            var_dump($this->httpRequest->request->all());
-            die();
             throw new InvalidResponseException(
                 'Invalid signature:'.$key." ".$amount . ":"
                 . $orderNo . ":"

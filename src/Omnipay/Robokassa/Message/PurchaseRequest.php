@@ -95,8 +95,6 @@ class PurchaseRequest extends AbstractRequest
         return $data;
     }
 
-
-
     public function getOutSum()
     {
         return $this->getParameter('OutSum');
@@ -106,8 +104,6 @@ class PurchaseRequest extends AbstractRequest
     {
         return $this->setParameter('OutSum',  $value);
     }
-
-    
 
     public function send()
     {
