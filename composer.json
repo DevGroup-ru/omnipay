@@ -30,6 +30,6 @@
         "silex/silex": "1.0.*@dev",
         "squizlabs/php_codesniffer": "~1.4.4",
         "twig/twig": "~1.12",
-        "monolog/monolog": ">=1.0.0",
+        "monolog/monolog": ">=1.0.0"
     }
 }
