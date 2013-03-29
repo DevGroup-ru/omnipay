@@ -80,7 +80,7 @@ class PurchaseRequest extends AbstractRequest
         $data['MrchLogin'] = $this->getMerchantLogin();
 
         $data['InvId'] = $this->getTransactionId();
-        $data['OutSum'] = $this->getOutSum();
+        $data['OutSum'] = $this->getAmount();
         $data['Desc'] = $this->getDescription();
 
         $data['SignatureValue'] = md5(
