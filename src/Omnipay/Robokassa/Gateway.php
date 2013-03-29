@@ -24,6 +24,7 @@ class Gateway extends AbstractGateway
             'MerchantPass1' => '',
             'MerchantPass2' => '',
             'testMode' => false,
+            'IncCurrLabel' => '',
         );
     }
 
@@ -55,6 +56,16 @@ class Gateway extends AbstractGateway
     public function setMerchantPass2($value)
     {
         return $this->setParameter('MerchantPass2', $value);
+    }
+
+    public function getIncCurrLabel()
+    {
+        return $this->getParameter('IncCurrLabel');
+    }
+
+    public function setIncCurrLabel($value)
+    {
+        return $this->setParameter('IncCurrLabel', $value);
     }
 
     /**

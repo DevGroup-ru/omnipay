@@ -92,6 +92,7 @@ class PurchaseRequest extends AbstractRequest
             .$this->getMerchantPass1()
         );
         $data['Culture'] = 'ru';
+        $data['IncCurrLabel'] = $this->getIncCurrLabel();
 
         return $data;
     }
