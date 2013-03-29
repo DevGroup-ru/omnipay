@@ -58,7 +58,7 @@ class PurchaseRequest extends AbstractRequest
         $data['MrchLogin'] = $this->getMerchantLogin();
 
         $data['InvId'] = $this->getTransactionId();
-        $data['OutSum'] = $this->getAmountDecimal();
+        $data['OutSum'] = $this->getOutSumDecimal();
         $data['Desc'] = $this->getDescription();
 
         $data['SignatureValue'] = md5($data['MrchLogin'].":".$data['OutSum'].":".$data['InvId'].":".$this->getMerchantPass1());
@@ -67,11 +67,27 @@ class PurchaseRequest extends AbstractRequest
         return $data;
     }
 
-    public function getAmount()
+
+
+    public function getOutSum()
     {
         return $this->getParameter('OutSum');
     }
 
+    public function setOutSum($value)
+    {
+        return $this->setParameter('OutSum', (int) $value);
+    }
+
+    public function getOutSumDecimal()
+    {
+        return number_format(
+            $this->getOutSum() / $this->getCurrencyDecimalFactor(),
+            $this->getCurrencyDecimalPlaces(),
+            '.',
+            ''
+        );
+    }
 
     public function send()
     {
